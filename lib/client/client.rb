@@ -31,12 +31,13 @@ class ApiClient
    end
 
    def request(method, path, params)
-      case method
+      method_sym = method.downcase.to_sym
+      case method_sym
       when :get
          full_path = encode_path_params(path, params)
-         request = VERB_MAP[method.to_sym].new(full_path)
+         request = VERB_MAP[method_sym].new(full_path)
       else
-         request = VERB_MAP[method.to_sym].new(path)
+         request = VERB_MAP[method_sym].new(path)
          request.set_form_data(params)
       end
 
