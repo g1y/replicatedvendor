@@ -11,7 +11,7 @@ class Apps
 
 	def delete(appid)
 		method = "DELETE"
-		if appid.is_a? Integer
+		if not appid.is_a? Integer
 			raise "Non integer appid"
 		end
 		endpoint = self.ENDPOINT + "/" + appid
@@ -20,7 +20,7 @@ class Apps
 
 	def delete_branding(appid)
 		method = "DELETE"
-		if appid.is_a? Integer
+		if not appid.is_a? Integer
 			raise "Non integer appid"
 		end
 		endpoint = self.ENDPOINT + "/" + appid + "/branding"
@@ -29,7 +29,7 @@ class Apps
 
 	def create(name)
 		method = "POST"
-		if appid.is_a? String
+		if not appid.is_a? String
 			raise "Non string app name"
 		end
 		return self.client.request(method, self.ENDPOINT, {"name" => name})
