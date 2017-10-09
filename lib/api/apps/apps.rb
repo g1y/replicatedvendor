@@ -1,7 +1,7 @@
 class Apps
 	def initialize(client)
 		@client = client
-		@ENDPOINT = client.ENDPOINT + "/" + "apps"
+		@ENDPOINT = client.ENDPOINT + "/" + "app"
 	end
 
 	def list()
@@ -18,13 +18,20 @@ class Apps
 		return self.client.request(method, endpoint)
 	end
 
-	def delete_branding()
+	def delete_branding(appid)
 		method = "DELETE"
-		return self.client.request(method, self.ENDPOINT)
+		if appid.is_a? Integer
+			raise "Non integer appid"
+		end
+		endpoint = self.ENDPOINT + "/" + appid + "/branding"
+		return self.client.request(method, endpoint)
 	end
 
-	def create()
+	def create(name)
 		method = "POST"
-		return self.client.request(method, self.ENDPOINT)
+		if appid.is_a? String
+			raise "Non string app name"
+		end
+		return self.client.request(method, self.ENDPOINT, {"name" => name})
 	end
 end
