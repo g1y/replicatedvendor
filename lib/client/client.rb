@@ -12,9 +12,13 @@ class ApiClient
       :delete => Net::HTTP::Delete
    }
 
-   def initialize(token = nil, endpoint = ENDPOINT)
+   def initialize(endpoint = ENDPOINT)
       uri = URI.parse(endpoint)
       @http = Net::HTTP.new(uri.host, uri.port)
+   end
+
+   def set_token(api_token)
+      @api_token = api_token
    end
 
    def request_json(method, path, params)
@@ -27,13 +31,18 @@ class ApiClient
    end
 
    def request(method, path, params)
-      case method
+      method_sym = method.downcase.to_sym
+      case method_sym
       when :get
          full_path = encode_path_params(path, params)
-         request = VERB_MAP[method.to_sym].new(full_path)
+         request = VERB_MAP[method_sym].new(full_path)
       else
-         request = VERB_MAP[method.to_sym].new(path)
+         request = VERB_MAP[method_sym].new(path)
          request.set_form_data(params)
+      end
+
+      if @api_token
+         request['Authorization'] = @api_token
       end
 
       @http.request(request)
