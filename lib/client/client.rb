@@ -4,7 +4,7 @@ require "ostruct"
 require "json"
 
 class ApiClient
-   ENDPOINT = "https://api.replicated.com/vendor/v1"
+   VENDOR_ENDPOINT = "https://api.replicated.com"
    VERB_MAP = {
       :get    => Net::HTTP::Get,
       :post   => Net::HTTP::Post,
@@ -12,9 +12,10 @@ class ApiClient
       :delete => Net::HTTP::Delete
    }
 
-   def initialize(endpoint = ENDPOINT)
-      uri = URI.parse(endpoint)
-      @http = Net::HTTP.new(uri.host, uri.port)
+   def initialize
+      uri = URI.parse(VENDOR_ENDPOINT)
+      @http = Net::HTTP.new(uri.host, uri.port,
+       :use_ssl => uri.scheme == 'https')
    end
 
    def set_token(api_token)
