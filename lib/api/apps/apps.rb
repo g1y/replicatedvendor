@@ -1,6 +1,6 @@
-class Apps
+class Apps < ApiModule
 	def initialize(client)
-		@client = client
+		super(client)
 		@ENDPOINT = client.ENDPOINT + "/" + "app"
 	end
 
