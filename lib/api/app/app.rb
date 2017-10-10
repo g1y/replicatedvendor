@@ -25,16 +25,21 @@ class App < ApiModule
 	end
 
 	def create_license_field(appid:, options:)
+		method = "POST"
 		endpoint = "app/" + appid + "/licensefield"
-		return self.client.request("POST", endpoint, options)
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, endpoint, options)
 	end
 
 	def edit_license_field(appid:, license_field_name:, options:)
+		method = "PUT"
 		endpoint = "app/" + appid + "/licensefield/" + license_field_name
-		return self.client.request("PUT", endpoint, options)
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, endpoint, options)
 	end
 
 	def delete_license_field(appid:, license_field_name:)
+		method = "DELETE"
 		endpoint = "app/" + appid + "/licensefield/" + license_field_name
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, endpoint)
