@@ -6,10 +6,11 @@ class VendorApi
 	def initialize(api_token = nil)
 		@api_token = api_token
 		@client = ApiClient.new()
+		@client.set_token(@api_token)
 	end
 
 	def app
-
+		return App.new(@client)
 	end
 
 	def apps
