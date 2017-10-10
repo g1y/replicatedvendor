@@ -6,7 +6,7 @@ class Apps < ApiModule
 	def list()
 		method = "GET"
 		endpoint = "app"
-      uri = ApiUri::build_uri(endpoint)
+		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
@@ -16,7 +16,7 @@ class Apps < ApiModule
 		end
 		method = "DELETE"
 		endpoint = "app/" + appid
-      uri = ApiUri::build_uri(endpoint)
+		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
@@ -26,7 +26,7 @@ class Apps < ApiModule
 		end
 		method = "DELETE"
 		endpoint = "app/" + appid + "/branding"
-      uri = ApiUri::build_uri(endpoint)
+		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
@@ -36,7 +36,7 @@ class Apps < ApiModule
 		end
 		method = "POST"
 		endpoint = "app"
-      uri = ApiUri::build_uri(endpoint)
+		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri, {"name" => name})
 	end
 end
