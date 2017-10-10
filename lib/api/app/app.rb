@@ -3,51 +3,51 @@ class App < ApiModule
 		super(client)
 	end
 
-	def list_branding(appid:)
+	def list_branding(app_id:)
 		method = "GET"
-		endpoint = "app/" + appid + "/branding"
+		endpoint = "app/" + app_id + "/branding"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def create_branding(appid:)
+	def create_branding(app_id:)
 		method = "POST"
-		endpoint = "app/" + appid + "/branding"
+		endpoint = "app/" + app_id + "/branding"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def list_license_fields(appid:)
+	def list_license_fields(app_id:)
 		method = "GET"
-		endpoint = "app/" + appid + "/licensefield"
+		endpoint = "app/" + app_id + "/licensefield"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def create_license_field(appid:, options:)
+	def create_license_field(app_id:, options:)
 		method = "POST"
-		endpoint = "app/" + appid + "/licensefield"
+		endpoint = "app/" + app_id + "/licensefield"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri, options)
 	end
 
-	def edit_license_field(appid:, license_field_name:, options:)
+	def edit_license_field(app_id:, license_field_name:, options:)
 		method = "PUT"
-		endpoint = "app/" + appid + "/licensefield/" + license_field_name
+		endpoint = "app/" + app_id + "/licensefield/" + license_field_name
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri, options)
 	end
 
-	def delete_license_field(appid:, license_field_name:)
+	def delete_license_field(app_id:, license_field_name:)
 		method = "DELETE"
-		endpoint = "app/" + appid + "/licensefield/" + license_field_name
+		endpoint = "app/" + app_id + "/licensefield/" + license_field_name
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def list_license(appid:)
+	def list_license(app_id:)
 		method = "GET"
-		endpoint = "app/" + appid + "/licenses"
+		endpoint = "app/" + app_id + "/licenses"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
