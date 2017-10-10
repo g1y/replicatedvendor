@@ -14,42 +14,38 @@ class VendorApi
 	end
 
 	def apps
-
+		return Apps.new(@client)
 	end
 
 	def auditlog
-
-	end
-
-	def auditlog
-
+		return AuditLog.new(@client)
 	end
 
 	def auth
-
+		return Auth.new(@client)
 	end
 
 	def channel
-
+		return Channel.new(@client)
 	end
 
 	def license
-
+		return License.new(@client)
 	end
 
 	def licenes
-
+		return Licenses.new(@client)
 	end
 
 	def release
-
+		return Release.new(@client)
 	end
 
 	def releases
-
+		return Releases.new(@client)
 	end
 
 	def team
-
+		return Team.new(@client)
 	end
 end
