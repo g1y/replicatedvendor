@@ -3,7 +3,7 @@ class App < ApiModule
 		super(client)
 	end
 
-	def list_branding(appid)
+	def list_branding(appid:)
 		method = "GET"
 		endpoint = "app/" + appid + "/branding"
 		uri = ApiUri::build_uri(endpoint)
@@ -24,39 +24,23 @@ class App < ApiModule
 		return self.client.request(method, endpoint)
 	end
 
-	def create_license_field(appid:, default:, hidden:, name:, required:, title:, type:)
-		method = "POST"
+	def create_license_field(appid:, options:)
 		endpoint = "app/" + appid + "/licensefield"
-		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, endpoint, {
-			"default": default,
-			"hidden": hidden,
-			"name": name,
-			"required": required,
-			"title": title,
-			"type": type,
-		})
+		return self.client.request("POST", endpoint, options)
 	end
 
-	def edit_license_field(appid, license_field_name, default, hidden, title)
-		method = "PUT"
+	def edit_license_field(appid:, license_field_name:, options:)
 		endpoint = "app/" + appid + "/licensefield/" + license_field_name
-		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri, {
-			"default": default,
-			"hidden": hidden,
-			"title": title,
-		})
+		return self.client.request("PUT", endpoint, options)
 	end
 
-	def delete_license_field(appid, license_field_name)
-		method = "DELETE"
+	def delete_license_field(appid:, license_field_name:)
 		endpoint = "app/" + appid + "/licensefield/" + license_field_name
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, endpoint)
 	end
 
-	def list_license(appid)
+	def list_license(appid:)
 		method = "GET"
 		endpoint = "app/" + appid + "/licenses"
 		uri = ApiUri::build_uri(endpoint)
