@@ -4,7 +4,7 @@ require "ostruct"
 require "json"
 
 class ApiClient
-   ENDPOINT = "https://api.replicated.com/vendor/v1"
+   VENDOR_HOST = "api.replicated.com"
    VERB_MAP = {
       :get    => Net::HTTP::Get,
       :post   => Net::HTTP::Post,
@@ -12,17 +12,18 @@ class ApiClient
       :delete => Net::HTTP::Delete
    }
 
-   def initialize(endpoint = ENDPOINT)
-      uri = URI.parse(endpoint)
-      @http = Net::HTTP.new(uri.host, uri.port)
+   def initialize
+      # Create persistent HTTP connection
+      @http = Net::HTTP.new(VENDOR_HOST, URI::HTTPS::DEFAULT_PORT,
+       :use_ssl => uri.scheme == 'https')
    end
 
    def set_token(api_token)
       @api_token = api_token
    end
 
-   def request_json(method, path, params)
-      response = request(method, path, params)
+   def request_json(method, uri, params = nil)
+      response = request(method, uri, params)
       body = JSON.parse(response.body)
 
       OpenStruct.new(:code => response.code, :body => body)
@@ -30,14 +31,10 @@ class ApiClient
       response
    end
 
-   def request(method, path, params)
+   def request(method, uri, params)
       method_sym = method.downcase.to_sym
-      case method_sym
-      when :get
-         full_path = encode_path_params(path, params)
-         request = VERB_MAP[method_sym].new(full_path)
-      else
-         request = VERB_MAP[method_sym].new(path)
+
+      unless method_sym.is_eql? :get
          request.set_form_data(params)
       end
 
@@ -46,10 +43,5 @@ class ApiClient
       end
 
       @http.request(request)
-   end
-      
-   def encode_path_params(path, params)
-      encoded = URI.encode_www_form(params)
-      [path, encoded].join("?")
    end
 end
