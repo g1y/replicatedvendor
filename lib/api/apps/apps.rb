@@ -1,12 +1,11 @@
 class Apps < ApiModule
 	def initialize(client)
 		super(client)
-		@ENDPOINT = client.ENDPOINT + "/" + "app"
 	end
 
 	def list()
 		method = "GET"
-		return self.client.request(method, self.ENDPOINT)
+		return self.client.request(method, "app")
 	end
 
 	def delete(appid)
@@ -14,7 +13,7 @@ class Apps < ApiModule
 		unless appid.is_a? Integer
 			raise "Non integer appid"
 		end
-		endpoint = self.ENDPOINT + "/" + appid
+		endpoint = "app/" + appid
 		return self.client.request(method, endpoint)
 	end
 
@@ -23,7 +22,7 @@ class Apps < ApiModule
 		unless appid.is_a? Integer
 			raise "Non integer appid"
 		end
-		endpoint = self.ENDPOINT + "/" + appid + "/branding"
+		endpoint = "app/" + appid + "/branding"
 		return self.client.request(method, endpoint)
 	end
 
@@ -32,6 +31,6 @@ class Apps < ApiModule
 		unless appid.is_a? String
 			raise "Non string app name"
 		end
-		return self.client.request(method, self.ENDPOINT, {"name" => name})
+		return self.client.request(method, "app", {"name" => name})
 	end
 end
