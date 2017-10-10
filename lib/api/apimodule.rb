@@ -1,3 +1,5 @@
+require_relative "./apiuri.rb"
+
 class ApiModule
 	def initialize(client = nil)
 		@client = client
