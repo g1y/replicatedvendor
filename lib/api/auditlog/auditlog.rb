@@ -4,9 +4,9 @@ class AuditLog < ApiModule
 	end
 
 	# Expects query parameter target_id
-	def get_token(params)
+	def get_token(options)
 		endpoint = "auditlogtoken"
-		uri = ApiUri::build_uri(endpoint, params)
+		uri = ApiUri::build_uri(endpoint, options)
 		return self.client.request("GET", uri)
 	end
 end
