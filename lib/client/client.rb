@@ -34,6 +34,8 @@ class ApiClient
 	def request(method, uri, params)
 		method_sym = method.downcase.to_sym
 
+		request = VERB_MAP[method_sym].new(uri)
+
 		unless method_sym.is_eql? :get
 			request.set_form_data(params)
 		end
