@@ -5,32 +5,29 @@ class Apps < ApiModule
 
 	def list()
 		method = "GET"
-		return self.client.request(method, "app")
+		endpoint = "app"
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, uri)
 	end
 
-	def delete(appid)
+	def delete(appid:)
 		method = "DELETE"
-		unless appid.is_a? Integer
-			raise "Non integer appid"
-		end
 		endpoint = "app/" + appid
-		return self.client.request(method, endpoint)
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, uri)
 	end
 
-	def delete_branding(appid)
+	def delete_branding(appid:)
 		method = "DELETE"
-		unless appid.is_a? Integer
-			raise "Non integer appid"
-		end
 		endpoint = "app/" + appid + "/branding"
-		return self.client.request(method, endpoint)
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, uri)
 	end
 
-	def create(name)
+	def create(options:)
 		method = "POST"
-		unless appid.is_a? String
-			raise "Non string app name"
-		end
-		return self.client.request(method, "app", {"name" => name})
+		endpoint = "app"
+		uri = ApiUri::build_uri(endpoint)
+		return self.client.request(method, uri, options)
 	end
 end
