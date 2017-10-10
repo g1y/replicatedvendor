@@ -27,7 +27,7 @@ class Release < ApiModule
 		return self.client.request(method, uri, options)
 	end
 
-	def get_propertiesa(appid:, sequence:)
+	def get_properties(appid:, sequence:)
 		method = "GET"
 		endpoint = "app/" << appid << "/" << sequence << "/properties"
 		uri = ApiUri::build_uri(endpoint)
