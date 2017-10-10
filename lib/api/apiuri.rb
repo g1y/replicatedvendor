@@ -4,15 +4,11 @@ class ApiUri
    VENDOR_HOST = "api.replicated.com"
    VENDOR_BASE_PATH = "/vendor/v1"
 
-   def self.build_uri(module_name, endpoint = nil, params = nil)
+   def self.build_uri(endpoint, params = nil)
       uri_base = "https://" << VENDOR_HOST
       uri = URI(uri_base)
 
-      path = VENDOR_BASE_PATH << "/" << module_name
-      if endpoint
-         path = path << "/" << endpoint
-      end
-      uri.path = path
+      uri.path = VENDOR_BASE_PATH << "/" << endpoint
 
       if params
          uri.query = URI.encode_www_form(params)
