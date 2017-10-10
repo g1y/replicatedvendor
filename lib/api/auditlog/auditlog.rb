@@ -5,7 +5,7 @@ class AuditLog < ApiModule
 
 	def get_token(targetid)
 		endpoint = "auditlogtoken"
-		params = {target_id: targetid}
+		params = {"target_id" => targetid}
 		return self.client.request("GET", endpoint, params)
 	end
 end
