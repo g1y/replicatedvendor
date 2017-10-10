@@ -3,52 +3,52 @@ require_relative "./client/client.rb"
 require_relative "./api/apimodule.rb"
 
 class VendorApi
-   def initialize(api_token = nil)
-      @api_token = api_token
-      @client = ApiClient.new()
-   end
+	def initialize(api_token = nil)
+		@api_token = api_token
+		@client = ApiClient.new()
+	end
 
-   def app
+	def app
 
-   end
-   
-   def apps
+	end
 
-   end
+	def apps
 
-   def auditlog
+	end
 
-   end
+	def auditlog
 
-   def auditlog
+	end
 
-   end
+	def auditlog
 
-   def auth
+	end
 
-   end
+	def auth
 
-   def channel
+	end
 
-   end
+	def channel
 
-   def license
+	end
 
-   end
+	def license
 
-   def licenes
+	end
 
-   end
+	def licenes
 
-   def release
+	end
 
-   end
+	def release
 
-   def releases
+	end
 
-   end
+	def releases
 
-   def team
+	end
 
-   end
+	def team
+
+	end
 end
