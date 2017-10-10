@@ -1,5 +1,7 @@
 require_relative "./client/client.rb"
 
+require_relative "./api/apimodule.rb"
+
 class VendorApi
    def initialize(api_token = nil)
       @api_token = api_token
