@@ -10,16 +10,16 @@ class Apps < ApiModule
 		return self.client.request(method, uri)
 	end
 
-	def delete(appid:)
+	def delete(app_id:)
 		method = "DELETE"
-		endpoint = "app/" + appid
+		endpoint = "app/" + app_id
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def delete_branding(appid:)
+	def delete_branding(app_id:)
 		method = "DELETE"
-		endpoint = "app/" + appid + "/branding"
+		endpoint = "app/" + app_id + "/branding"
 		uri = ApiUri::build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
