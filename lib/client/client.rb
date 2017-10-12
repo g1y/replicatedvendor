@@ -14,8 +14,8 @@ class ApiClient
 
 	def initialize
 		# Create persistent HTTP connection
-		@http = Net::HTTP.new(VENDOR_HOST, URI::HTTPS::DEFAULT_PORT,
-		 :use_ssl => true)
+		@http = Net::HTTP.new(VENDOR_HOST, URI::HTTPS::DEFAULT_PORT)
+		@http.use_ssl = true
 	end
 
 	def set_token(api_token)
@@ -36,7 +36,7 @@ class ApiClient
 
 		request = VERB_MAP[method_sym].new(uri)
 
-		unless method_sym.is_eql? :get
+		unless method_sym == :get
 			request.set_form_data(params)
 		end
 
