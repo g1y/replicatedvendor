@@ -6,7 +6,7 @@
 require "replicatedvendor"
 
 token = "my-replicated-token"
-rvapi = replicatedvendor.VendorApi.new(token)
+rvapi = VendorApi.new(token)
 
 apps = rapi.apps.list()
 puts apps 
