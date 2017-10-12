@@ -69,4 +69,68 @@ class License < ApiModule
 		uri = ApiUri.build_uri(endpoint)
 		return self.client.request(method, uri, options)
 	end
+
+	def set_license_field(license_id:, options:)
+		method = "PUT"
+		endpoint = "license/" << license_id << "/field"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri, options)
+	end
+
+	def get_license_fields(license_id:)
+		method = "GET"
+		endpoint = "license/" << license_id << "/fields"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri)
+	end
+
+	def update_license_fields(license_id:, options:)
+		method = "PUT"
+		endpoint = "license/" << license_id << "/field"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri, options)
+	end
+
+	def get_license_instance(license_id:, instance_id:)
+		method = "GET"
+		endpoint = "license/" << license_id << "/instance/" << instance_id
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri)
+	end
+
+	def list_tracked_license_instance(license_id:)
+		method = "GET"
+		endpoint = "license/" << license_id << "/instances"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri)
+	end
+
+	def list_untracked_license_instance(license_id:)
+		method = "GET"
+		endpoint = "license/" << license_id << "/instances/untracked"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri)
+	end
+
+	def revoke_license(license_id:)
+		method = "PUT"
+		endpoint = "license/" << license_id << "/revoke"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri, options)
+	end
+
+	def unarchive_license(license_id:)
+		method = "PUT"
+		endpoint = "license/" << license_id << "/unarchive"
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri, options)
+	end
+
+   # Warning: this returns an RLI in Base64
+	def download_license(license_id:)
+		method = "GET"
+		endpoint = "licensekey/" << license_id
+		uri = ApiUri.build_uri(endpoint)
+		return self.client.request(method, uri, options)
+	end
 end
