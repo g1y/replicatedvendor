@@ -98,14 +98,14 @@ class License < ApiModule
 		return self.client.request(method, uri)
 	end
 
-	def list_tracked_license_instance(license_id:)
+	def list_tracked_license_instances(license_id:)
 		method = "GET"
 		endpoint = "license/" << license_id << "/instances"
 		uri = ApiUri.build_uri(endpoint)
 		return self.client.request(method, uri)
 	end
 
-	def list_untracked_license_instance(license_id:)
+	def list_untracked_license_instances(license_id:)
 		method = "GET"
 		endpoint = "license/" << license_id << "/instances/untracked"
 		uri = ApiUri.build_uri(endpoint)
@@ -116,14 +116,14 @@ class License < ApiModule
 		method = "PUT"
 		endpoint = "license/" << license_id << "/revoke"
 		uri = ApiUri.build_uri(endpoint)
-		return self.client.request(method, uri, options)
+		return self.client.request(method, uri)
 	end
 
 	def unarchive_license(license_id:)
 		method = "PUT"
 		endpoint = "license/" << license_id << "/unarchive"
 		uri = ApiUri.build_uri(endpoint)
-		return self.client.request(method, uri, options)
+		return self.client.request(method, uri)
 	end
 
    # Warning: this returns an RLI in Base64
@@ -131,6 +131,6 @@ class License < ApiModule
 		method = "GET"
 		endpoint = "licensekey/" << license_id
 		uri = ApiUri.build_uri(endpoint)
-		return self.client.request(method, uri, options)
+		return self.client.request(method, uri)
 	end
 end
