@@ -7,6 +7,6 @@ class Team < ApiModule
 		method = "POST"
 		endpoint = "team/invite/" << appid << "/signup"
 		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri, options)
+		return @client.request_json(method, uri, options)
 	end
 end
