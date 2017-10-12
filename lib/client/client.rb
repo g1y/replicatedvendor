@@ -15,7 +15,7 @@ class ApiClient
 	def initialize
 		# Create persistent HTTP connection
 		@http = Net::HTTP.new(VENDOR_HOST, URI::HTTPS::DEFAULT_PORT,
-		 :use_ssl => uri.scheme == 'https')
+		 :use_ssl => true)
 	end
 
 	def set_token(api_token)
