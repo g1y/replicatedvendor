@@ -7,27 +7,27 @@ class Apps < ApiModule
 		method = "GET"
 		endpoint = "app"
 		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri)
+		return @client.request_json(method, uri)
 	end
 
 	def delete(app_id:)
 		method = "DELETE"
 		endpoint = "app/" + app_id
 		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri)
+		return @client.request_json(method, uri)
 	end
 
 	def delete_branding(app_id:)
 		method = "DELETE"
 		endpoint = "app/" + app_id + "/branding"
 		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri)
+		return @client.request_json(method, uri)
 	end
 
 	def create(options:)
 		method = "POST"
 		endpoint = "app"
 		uri = ApiUri::build_uri(endpoint)
-		return self.client.request(method, uri, options)
+		return @client.request_json(method, uri, options)
 	end
 end

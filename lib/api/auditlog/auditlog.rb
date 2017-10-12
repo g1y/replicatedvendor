@@ -8,6 +8,6 @@ class AuditLog < ApiModule
 		method = "GET"
 		endpoint = "auditlogtoken"
 		uri = ApiUri::build_uri(endpoint, options)
-		return self.client.request(method, uri)
+		return @client.request_json(method, uri)
 	end
 end
