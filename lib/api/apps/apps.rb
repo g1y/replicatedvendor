@@ -5,7 +5,7 @@ class Apps < ApiModule
 
 	def list()
 		method = "GET"
-		endpoint = "app"
+		endpoint = "apps"
 		uri = ApiUri::build_uri(endpoint)
 		return @client.request_json(method, uri)
 	end
