@@ -11,4 +11,14 @@ end
 
 api = VendorApi.new(api_token)
 
-pp api.apps.list
+apps_list = api.apps.list
+
+body = apps_list.body
+
+app_id_list = body.map { |app| app["App"] }
+
+app_id_list.each { |app|
+   app_id = app["Id"]
+   app_name = app["Name"]
+   puts "#{app_id} : #{app_name}"
+}
