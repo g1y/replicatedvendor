@@ -5,10 +5,10 @@ class ApiUri
    VENDOR_BASE_PATH = "/vendor/v1"
 
    def self.build_uri(endpoint, params = nil)
-      uri_base = "https://" << VENDOR_HOST
+      uri_base = "https://" + VENDOR_HOST
       uri = URI(uri_base)
 
-      uri.path = VENDOR_BASE_PATH << "/" << endpoint
+      uri.path = VENDOR_BASE_PATH + "/" + endpoint
 
       if params
          uri.query = URI.encode_www_form(params)
