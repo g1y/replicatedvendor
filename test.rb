@@ -21,4 +21,11 @@ app_id_list.each { |app|
    app_id = app["Id"]
    app_name = app["Name"]
    puts "#{app_id} : #{app_name}"
+   
+   # Test app endpoints
+   pp api.app.list_branding(app_id)
+   pp api.app.list_license_fields(app_id)
+   pp api.app.list_license(app_id)
+
+   
 }
