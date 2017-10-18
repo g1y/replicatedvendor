@@ -3,7 +3,7 @@ class Team < ApiModule
 		super(client)
 	end
 
-	def invite_to_team(appid:, options:)
+	def invite_to_team(appid, options)
 		method = "POST"
 		endpoint = "team/invite/" << appid << "/signup"
 		uri = ApiUri::build_uri(endpoint)
