@@ -1,4 +1,4 @@
-require "./lib/api.rb"
+require "./lib/replicatedvendor.rb"
 
 require 'pp'
 
