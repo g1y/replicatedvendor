@@ -1,12 +1,12 @@
 class Auth < ApiModule
-	def login(options:)
+	def login(options)
 		method = "POST"
 		endpoint = "user/login"
 		uri = ApiUri::build_uri(endpoint)
 		return @client.request_json(method, uri, options)
 	end
 
-	def login_otp(options:)
+	def login_otp(options)
 		method = "POST"
 		endpoint = "user/login/otp"
 		uri = ApiUri::build_uri(endpoint)
@@ -20,7 +20,7 @@ class Auth < ApiModule
 		return @client.request_json(method, uri)
 	end
 
-	def signup(options:)
+	def signup(options)
 		method = "POST"
 		endpoint = "user/signup"
 		uri = ApiUri::build_uri(endpoint)
